@@ -7,4 +7,4 @@ RUN apt update -y --allow-unauthenticated
 RUN apt install -y tzdata
 RUN ln -fs /usr/share/zoneinfo/America/New_York /etc/localtime
 RUN dpkg-reconfigure --frontend noninteractive tzdata
-RUN apt -y install bc build-essential cmake gfortran git libexpat1-dev libtiff-dev lmod openmpi-bin python3 time vim wget
+RUN apt -y install bc build-essential cmake gfortran git libexpat1-dev libtiff-dev lmod openmpi-bin python3 time wget vim
