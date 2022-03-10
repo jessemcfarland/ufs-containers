@@ -17,7 +17,17 @@ pipeline {
       }
     }
 
+    stage('Test') {
+      steps {
+        sh 'docker run "${DOCKER_IMAGE_TAG}" gfortran --version'
+      }
+    }
+
     stage('Release') {
+      when {
+        branch 'main'
+      }
+
       steps {
         sh 'docker login --username "${DOCKER_CREDS_USR}" --password "${DOCKER_CREDS_PSW}"'
         sh 'docker push "${DOCKER_IMAGE_TAG}"'
