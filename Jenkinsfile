@@ -19,13 +19,15 @@ pipeline {
   stages {
     stage('Build Ubuntu GNU') {
       steps {
-        sh 'docker build --tag "${UBUNTU_GNU_IMAGE_TAG}" --file "${WORKSPACE}/docker/${UBUNTU_GNU_IMAGE_NAME}.docker" "${WORKSPACE}"'
+        // sh 'docker build --tag "${UBUNTU_GNU_IMAGE_TAG}" --file "${WORKSPACE}/docker/${UBUNTU_GNU_IMAGE_NAME}.docker" "${WORKSPACE}"'
+        echo "Building ${env.UBUNTU_GNU_IMAGE_TAG}"
       }
     }
 
     stage('Test Ubuntu GNU') {
       steps {
-        sh 'docker run "${UBUNTU_GNU_IMAGE_TAG}" gfortran --version'
+        // sh 'docker run "${UBUNTU_GNU_IMAGE_TAG}" gfortran --version'
+        echo "Testing ${env.UBUNTU_GNU_IMAGE_TAG}"
       }
     }
 
@@ -35,20 +37,23 @@ pipeline {
       }
 
       steps {
-        sh 'docker login --username "${DOCKER_HUB_USR}" --password "${DOCKER_HUB_PSW}"'
-        sh 'docker push "${UBUNTU_GNU_IMAGE_TAG}"'
+        // sh 'docker login --username "${DOCKER_HUB_USR}" --password "${DOCKER_HUB_PSW}"'
+        // sh 'docker push "${UBUNTU_GNU_IMAGE_TAG}"'
+        echo "Releasing ${env.UBUNTU_GNU_IMAGE_TAG}"
       }
     }
 
     stage('Build Ubuntu GNU HPC Stack') {
       steps {
-        sh 'docker build --tag "${UBUNTU_GNU_HPCSTACK_IMAGE_TAG}" --file "${WORKSPACE}/docker/${UBUNTU_GNU_HPCSTACK_IMAGE_NAME}.docker" "${WORKSPACE}"'
+        // sh 'docker build --tag "${UBUNTU_GNU_HPCSTACK_IMAGE_TAG}" --file "${WORKSPACE}/docker/${UBUNTU_GNU_HPCSTACK_IMAGE_NAME}.docker" "${WORKSPACE}"'
+        echo "Building ${env.UBUNTU_GNU_HPCSTACK_IMAGE_TAG}"
       }
     }
 
     stage('Test Ubuntu GNU HPC Stack') {
       steps {
-        sh 'docker run "${UBUNTU_GNU_HPCSTACK_IMAGE_TAG}"'
+        // sh 'docker run "${UBUNTU_GNU_HPCSTACK_IMAGE_TAG}"'
+        echo "Testing ${env.UBUNTU_GNU_HPCSTACK_IMAGE_TAG}"
       }
     }
 
@@ -58,20 +63,23 @@ pipeline {
       }
 
       steps {
-        sh 'docker login --username "${DOCKER_HUB_USR}" --password "${DOCKER_HUB_PSW}"'
-        sh 'docker push "${UBUNTU_GNU_HPCSTACK_IMAGE_TAG}"'
+        // sh 'docker login --username "${DOCKER_HUB_USR}" --password "${DOCKER_HUB_PSW}"'
+        // sh 'docker push "${UBUNTU_GNU_HPCSTACK_IMAGE_TAG}"'
+        echo "Releasing ${env.UBUNTU_GNU_HPCSTACK_IMAGE_TAG}"
       }
     }
 
     stage('Build Ubuntu GNU SRW') {
       steps {
-        sh 'docker build --tag "${UBUNTU_GNU_SRW_IMAGE_TAG}" --file "${WORKSPACE}/docker/${UBUNTU_GNU_SRW_IMAGE_NAME}.docker" "${WORKSPACE}"'
+        // sh 'docker build --tag "${UBUNTU_GNU_SRW_IMAGE_TAG}" --file "${WORKSPACE}/docker/${UBUNTU_GNU_SRW_IMAGE_NAME}.docker" "${WORKSPACE}"'
+        echo "Building ${env.UBUNTU_GNU_SRW_IMAGE_TAG}"
       }
     }
 
     stage('Test Ubuntu GNU SRW') {
       steps {
-        sh 'docker run "${UBUNTU_GNU_SRW_IMAGE_TAG}"'
+        // sh 'docker run "${UBUNTU_GNU_SRW_IMAGE_TAG}"'
+        echo "Testing ${env.UBUNTU_GNU_SRW_IMAGE_TAG}"
       }
     }
 
@@ -81,8 +89,9 @@ pipeline {
       }
 
       steps {
-        sh 'docker login --username "${DOCKER_HUB_USR}" --password "${DOCKER_HUB_PSW}"'
-        sh 'docker push "${UBUNTU_GNU_SRW_IMAGE_TAG}"'
+        // sh 'docker login --username "${DOCKER_HUB_USR}" --password "${DOCKER_HUB_PSW}"'
+        // sh 'docker push "${UBUNTU_GNU_SRW_IMAGE_TAG}"'
+        echo "Releasing ${env.UBUNTU_GNU_SRW_IMAGE_TAG}"
       }
     }
   }
